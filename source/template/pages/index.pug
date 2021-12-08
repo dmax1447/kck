@@ -1,7 +1,9 @@
+
 extends ../_template
 
 block variables
 	-
+
 		const points = [
 			{
 				name:'ПВЗ Песчаная ул., 13',
@@ -26,12 +28,14 @@ block content
 							fieldset
 								each point in points
 									+radio('pickup_point', point.name, point.id)
+							#map
 						.tab.tab--delivery(data-tab='delivery')
 							fieldset
 								+input('name', 'ФИО')
 								+input('name', 'Телефон')
 								+input('address', 'Адрес доставки')
 								+textarea('comment', 'Комментарий')
+					button(type="submit") Отправить
 
 
 	include ../common/_footer.pug

@@ -22,9 +22,11 @@ $.path.task.forEach(function(taskPath) {
 $.gulp.task('default', $.gulp.series(
   'clean',
   $.gulp.parallel(
+
     'sass',
     'pug',
     'js:process',
+		'copy:data',
     'copy:image',
     'copy:fonts',
   ),
@@ -41,6 +43,7 @@ $.gulp.task('build', $.gulp.series(
     'pug',
     'js:process',
     'copy:image',
+		'copy:data',
     'copy:fonts',
   )
 
