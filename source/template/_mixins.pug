@@ -18,19 +18,22 @@ mixin popup(name)
 						rect(x='38.6758' width='1.87285' height='54.6952' transform='rotate(45 38.6758 0)' fill='white')
 					p.popup__button-text esc
 
-mixin input(name, label, isRequired)
-	- className = isRequired ? 'required' : ''
-	.form-group(class=className)
-		.form-group__wrap
-			input.form-group__control(id=name, name=name, type="text", placeholder=label)
-			label.form-group__label(for=name)=label
 
-mixin textarea(name, label, isRequired)
-	- className = isRequired ? 'required' : ''
-	.form-group(class=className)
-		.form-group__wrap
-			textarea.form-group__control.form-group__control--textarea(id=name, name=name, type="text", placeholder=label, rows="1")
-			label.form-group__label(for=name)=label
+
+mixin radio(name, label, value)
+	.input-radio
+		label=label
+			input(type="radio" name=name value=value)
+
+mixin input(name, label)
+	.input-text
+		label.input-text__label(for=name)=label
+		input.input-text__control(id=name, name=name, type="text", placeholder=label)
+
+mixin textarea(name, label)
+	.input-textarea
+		label.form-group__label(for=name)=label
+		textarea.form-group__control.form-group__control--textarea(id=name, name=name, type="text", placeholder=label, rows="1")
 
 mixin inputFile(name, label)
 	.form-group-file(data-file-input)

@@ -1,13 +1,37 @@
 extends ../_template
 
 block variables
-	- const title = 'Canpol babes';
-	- const isStoriesEnabled = false
+	-
+		const points = [
+			{
+				name:'ПВЗ Песчаная ул., 13',
+				id: '1',
+				coords: '55.801131, 37.508167'
+			},
+			{
+				name: 'ПВЗ Подсосенский пер., 11',
+				id: '2',
+				coords: '55.757556, 37.651601'
+			}
+		];
+
 
 block content
 	main.page
 		section.hero
 			.container
-				p hello!
+				form(data-form="delivery")
+					.tabs(data-tabs)
+						.tab.tab--active.tab--pickup(data-tab='pickup')
+							fieldset
+								each point in points
+									+radio('pickup_point', point.name, point.id)
+						.tab.tab--delivery(data-tab='delivery')
+							fieldset
+								+input('name', 'ФИО')
+								+input('name', 'Телефон')
+								+input('address', 'Адрес доставки')
+								+textarea('comment', 'Комментарий')
+
 
 	include ../common/_footer.pug
