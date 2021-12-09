@@ -24,17 +24,24 @@ block content
 			.container
 				form(data-form="delivery")
 					.tabs(data-tabs)
-						.tab.tab--active.tab--pickup(data-tab='pickup')
-							fieldset
-								each point in points
-									+radio('pickup_point', point.name, point.id)
-							#map
 						.tab.tab--delivery(data-tab='delivery')
-							fieldset
+							.tab__title
+								span.tab__title-text Доставка
+								+open-icon('tab__title-icon')
+							fieldset.form__fieldset
 								+input('name', 'ФИО')
 								+input('name', 'Телефон')
 								+input('address', 'Адрес доставки')
 								+textarea('comment', 'Комментарий')
+						.tab.tab--active.tab--pickup(data-tab='pickup')
+							.tab__title
+								span.tab__title-text Самовывоз
+								+open-icon('tab__title-icon')
+							fieldset.form__fieldset
+								each point in points
+									+radio('pickup_point', point.name, point.id)
+							#map
+
 					button(type="submit") Отправить
 
 

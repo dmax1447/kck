@@ -18,22 +18,28 @@ mixin popup(name)
 						rect(x='38.6758' width='1.87285' height='54.6952' transform='rotate(45 38.6758 0)' fill='white')
 					p.popup__button-text esc
 
+mixin open-icon(classname)
+	svg(class=classname, xmlns='http://www.w3.org/2000/svg' width='9.986' height='6.001' viewbox='0 0 9.986 6.001')
+		path#arrow(d='M726.007,145.664l3.552-3.313h0L731,141.008l1.441,1.344h0l3.552,3.313-1.441,1.344L731,143.7l-3.552,3.313Z' transform='translate(-726.007 -141.008)' fill='currentColor')
 
 
 mixin radio(name, label, value)
+	- id = `${name}-${value}`
 	.input-radio
-		label=label
-			input(type="radio" name=name value=value)
+		input.input-radio__control.visually-hidden(id=id, type="radio", name=name, value=value)
+		label.input-radio__label(for=id)=label
 
 mixin input(name, label)
 	.input-text
 		label.input-text__label(for=name)=label
 		input.input-text__control(id=name, name=name, type="text", placeholder=label)
+		p.error.input-text__error Поле обязательно
 
 mixin textarea(name, label)
 	.input-textarea
-		label.form-group__label(for=name)=label
-		textarea.form-group__control.form-group__control--textarea(id=name, name=name, type="text", placeholder=label, rows="1")
+		label.input-textarea__label(for=name)=label
+		textarea.input-textarea__control(id=name, name=name, type="text", placeholder=label, rows="3")
+		span.error.input-text__error
 
 mixin inputFile(name, label)
 	.form-group-file(data-file-input)

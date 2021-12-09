@@ -1,0 +1,13 @@
+.input-textarea {
+	width: 100%;
+	margin-bottom: 30px;
+	&__label {
+		display: block;
+		margin-bottom: 8px;
+	}
+	&__control {
+		display: block;
+		width: 100%;
+		padding: 16px 21px 18px;
+	}
+}
