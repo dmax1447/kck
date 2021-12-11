@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-	font-family: 'Museo', Sans, sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 14px;
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
@@ -22,34 +22,13 @@ body {
 .container{
 	width: 100%;
 	max-width: 1440px;
-	padding-left: 139px;
-	padding-right: 129px;
+	padding-left: 60px;
+	padding-right: 60px;
 	margin:0 auto;
 
-	@include tablets {
-		padding-left: 32px;
-		padding-right: 32px;
-	}
-
 	@include phone {
-		padding-left: 62px;
-		padding-right: 62px;
-	}
-}
-
-.inner-container {
-	max-width: 1301px;
-	padding: 0 41px;
-	margin:0 auto;
-
-	@include tablets {
-		padding-left: 32px;
-		padding-right: 32px;
-	}
-
-	@include phone {
-		padding-left: 20px;
-		padding-right: 20px;
+		padding-left: 30px;
+		padding-right: 30px;
 	}
 }
 
@@ -97,4 +76,8 @@ h1, h2, h3, h4, h5, h6 {
 	width: 1px;
 	height: 1px;
 	margin: -1px;
+}
+
+input, textarea {
+	outline: none;
 }

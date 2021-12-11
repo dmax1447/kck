@@ -1,6 +1,5 @@
 .input-radio {
 	width: 100%;
-	margin-bottom: 30px;
 	&__label {
 		display: block;
 		margin-bottom: 8px;
@@ -32,19 +31,33 @@
 			background-color: #DADEF0;
 			transform: translateY(-50%);
 		}
+
+		&:hover {
+			color: #0096DA;
+			&:before {
+				border-color: #212BFF;
+
+			}
+		}
+
 	}
+
 	&__control {
 		width: 100%;
 		padding: 16px 21px 18px;
-		//display: none;
 		&:checked ~ label {
 			&:after {
 				display: block;
+				background-color: #0096DA;
+			}
+		}
+		&[disabled] ~ label {
+			color: #B8BED8;
+			&:before {
+				background-color: #EDEEEF;
+				border-color: #EDEEEF;
 			}
 		}
 	}
-	&__error {
-		margin-top: 3px;
-		color: red;
-	}
+
 }

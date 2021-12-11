@@ -1,0 +1,41 @@
+.tabs {
+	&__labels {
+		display: flex;
+		overflow-y: hidden;
+		align-items: center;
+		@include phone {
+			display: none;
+		}
+	}
+
+	&__labels-item-wrap {
+		position: relative;
+		filter: drop-shadow(3px 2px 0 rgba(0,0,0, 0.1));
+		z-index: 1;
+
+
+		&:not(:first-child) {
+			margin-left: -28px;
+		}
+		&.active {
+			z-index: 2;
+			.tabs__labels-item {
+				background-color: #fff;
+				color: #212BFF
+			}
+		}
+	}
+
+	&__labels-item {
+		padding: 25px 65px 20px 40px;
+		background-color: #EDEEEF;
+		clip-path: polygon(0 0, 80% 0%, 100% 100%, 0% 100%);
+		color: #707070;
+		border-radius: 4px 4px 0 0;
+		position: relative;
+		cursor: pointer;
+
+
+
+	}
+}

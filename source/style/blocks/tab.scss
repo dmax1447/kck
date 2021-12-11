@@ -1,8 +1,44 @@
 .tab {
-	padding: 16px 18px;
+	background-color: #fff;
+
+
 	&__title {
-		padding: 18px 0;
+		padding: 16px 18px;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid #DADEF0;
+		cursor: pointer;
+
+		&:hover {
+			color: #0096DA;
+		}
+
+		@include desktop {
+			display: none;
+		}
 	}
+
+	&__title-icon {
+		transform: rotate(180deg);
+	}
+
+	&__content {
+		padding: 16px 18px;
+		display: none;
+	}
+
+	&.active {
+		.tab__title {
+			color: #0096DA;
+		}
+
+		.tab__title-icon {
+			transform: rotate(0deg);
+		}
+		.tab__content {
+			display: block;
+		}
+	}
+
 }

@@ -1,11 +1,12 @@
-import validate from 'jquery-validation'
-
+import FormController from './components/FormController';
 
 $(document).ready(function() {
 	function init() {
-		fetch('/assets/data/points.json')
-			.then(response => response.json())
-			.then(data => console.log(data))
+		const $form = $('[data-form]');
+		if ($form.length) {
+			new FormController($form)
+		}
+
 	}
 	init()
 

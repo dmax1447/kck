@@ -25,21 +25,21 @@ mixin open-icon(classname)
 
 mixin radio(name, label, value)
 	- id = `${name}-${value}`
-	.input-radio
+	.input-radio(class!=attributes.class)
 		input.input-radio__control.visually-hidden(id=id, type="radio", name=name, value=value)
 		label.input-radio__label(for=id)=label
 
-mixin input(name, label)
-	.input-text
+mixin input(name, label, placeholder)
+	.input-text(class!=attributes.class)
+		input.input-text__control(id=name, name=name, type="text", placeholder=placeholder)
 		label.input-text__label(for=name)=label
-		input.input-text__control(id=name, name=name, type="text", placeholder=label)
-		p.error.input-text__error Поле обязательно
 
-mixin textarea(name, label)
-	.input-textarea
+mixin textarea(name, label, placeholder)
+	.input-textarea(class!=attributes.class)
+		textarea.input-textarea__control(id=name, name=name, type="text", placeholder=placeholder, rows="3")
 		label.input-textarea__label(for=name)=label
-		textarea.input-textarea__control(id=name, name=name, type="text", placeholder=label, rows="3")
-		span.error.input-text__error
+
+
 
 mixin inputFile(name, label)
 	.form-group-file(data-file-input)

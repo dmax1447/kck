@@ -1,13 +1,26 @@
 .input-textarea {
 	width: 100%;
-	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+
 	&__label {
 		display: block;
-		margin-bottom: 8px;
+		margin-bottom: 10px;
+		font-size: 14px;
+		line-height: 26px;
+		order: 1;
 	}
 	&__control {
+		order: 2;
 		display: block;
 		width: 100%;
-		padding: 16px 21px 18px;
+		border: 1px solid #DADEF0;
+		font-size: 16px;
+		line-height: 26px;
+		border-radius: 4px;
+		padding: 17px 20px 18px;
+		&::placeholder {
+			color:#B8BED8
+		}
 	}
 }

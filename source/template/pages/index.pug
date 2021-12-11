@@ -3,46 +3,53 @@ extends ../_template
 
 block variables
 	-
-
+		// данные для статичной генерации точек
 		const points = [
-			{
-				name:'ПВЗ Песчаная ул., 13',
-				id: '1',
-				coords: '55.801131, 37.508167'
-			},
-			{
-				name: 'ПВЗ Подсосенский пер., 11',
-				id: '2',
-				coords: '55.757556, 37.651601'
-			}
+			// {
+			// 	name:'ПВЗ Песчаная ул., 13',
+			// 	id: '1',
+			// 	coords: '55.801131, 37.508167'
+			// },
+			// {
+			// 	name: 'ПВЗ Подсосенский пер., 11',
+			// 	id: '2',
+			// 	coords: '55.757556, 37.651601'
+			// }
 		];
 
 
 block content
 	main.page
-		section.hero
-			.container
-				form(data-form="delivery")
-					.tabs(data-tabs)
-						.tab.tab--delivery(data-tab='delivery')
-							.tab__title
+		.container
+			section.widget
+				h1.widget__title Выберите способ доставки
+				form.form(data-form="delivery-widget")
+					.tabs.form__content(data-tabs)
+						.tabs__labels
+							.tabs__labels-item-wrap.active(data-tab-title="delivery")
+								.tabs__labels-item.tabs__labels-item--active Доставка
+							.tabs__labels-item-wrap(data-tab-title='pickup')
+								.tabs__labels-item Самовывоз
+						.tab.tab--delivery.active(data-tab='delivery')
+							.tab__title(data-tab-title="delivery")
 								span.tab__title-text Доставка
 								+open-icon('tab__title-icon')
-							fieldset.form__fieldset
-								+input('name', 'ФИО')
-								+input('name', 'Телефон')
-								+input('address', 'Адрес доставки')
-								+textarea('comment', 'Комментарий')
-						.tab.tab--active.tab--pickup(data-tab='pickup')
-							.tab__title
+							.tab__content
+								fieldset.form__fieldset
+									+input('name', 'ФИО', 'Только кириллица')(class = 'form__input')
+									+input('phone', 'Телефон', '+7 (___) ___-__-__')(class = 'form__input')
+									+input('address', 'Адрес доставки', 'Город, улица, дом')(class = 'form__input')
+									+textarea('comment', 'Комментарий')(class = 'form__input')
+						.tab.tab--pickup(data-tab='pickup')
+							.tab__title(data-tab-title='pickup')
 								span.tab__title-text Самовывоз
 								+open-icon('tab__title-icon')
-							fieldset.form__fieldset
-								each point in points
-									+radio('pickup_point', point.name, point.id)
-							#map
+							.tab__content
+								fieldset.form__fieldset.form__fieldset--pickup
+									// each point in points
+									// 	+radio('pickup_point', point.name, point.id)(class = 'form__input')
+								#map.map
+									p здесь карта
+					.form__footer
+						button.btn(type="submit") Отправить
 
-					button(type="submit") Отправить
-
-
-	include ../common/_footer.pug
