@@ -43,8 +43,6 @@
 	}
 
 	&__control {
-		width: 100%;
-		padding: 16px 21px 18px;
 		&:checked ~ label {
 			&:after {
 				display: block;

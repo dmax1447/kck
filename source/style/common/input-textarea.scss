@@ -19,8 +19,27 @@
 		line-height: 26px;
 		border-radius: 4px;
 		padding: 17px 20px 18px;
+
 		&::placeholder {
-			color:#B8BED8
+			color:#B8BED8;
+		}
+
+		&:hover {
+			border-color: #C3C9DB;
+		}
+
+		&:focus {
+			border-color: #8288A2;
+		}
+
+		&:disabled {
+			color: #B8BED8;
+			border-color: #EDEEEF;
+			background-color: #EDEEEF;
+
+			& ~ label {
+				color: #B8BED8;
+			}
 		}
 	}
 }

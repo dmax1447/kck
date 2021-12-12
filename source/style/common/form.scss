@@ -50,5 +50,8 @@
 		justify-content: flex-end;
 		padding: 23px 16px;
 		background-color: #fff;
+		@include desktop {
+			padding: 32px;
+		}
 	}
 }

@@ -20,15 +20,15 @@ body {
 }
 
 .container{
-	width: 100%;
-	max-width: 1440px;
-	padding-left: 60px;
-	padding-right: 60px;
-	margin:0 auto;
+	padding-left: 16px;
+	padding-right: 16px;
 
-	@include phone {
-		padding-left: 30px;
-		padding-right: 30px;
+	@include desktop {
+		width: 100%;
+		max-width: 1440px;
+		padding-left: 60px;
+		padding-right: 60px;
+		margin:0 auto;
 	}
 }
 

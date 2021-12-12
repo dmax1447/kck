@@ -1,13 +1,13 @@
 import FormController from './components/FormController';
 
-$(document).ready(function() {
-	function init() {
-		const $form = $('[data-form]');
-		if ($form.length) {
-			new FormController($form)
-		}
-
+function init() {
+	const $form = $('[data-form]');
+	if ($form.length) {
+		const formController = new FormController($form)
+		formController.init()
 	}
-	init()
+}
 
+$(document).ready(function() {
+	init()
 });

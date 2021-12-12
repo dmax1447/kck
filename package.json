@@ -46,6 +46,7 @@
     "jquery": "^3.6.0",
     "jquery-mask-plugin": "^1.14.16",
     "jquery-validation": "^1.19.3",
-    "node-normalize-scss": "^8.1.2"
+    "node-normalize-scss": "^8.1.2",
+    "suggestions-jquery": "^21.8.0"
   }
 }

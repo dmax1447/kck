@@ -40,17 +40,13 @@ export const validationRulesConfig = {
 	}
 }
 export const placemarkContent = {
-	hintContent: 'Собственный значок метки',
-	balloonContent: 'Это красивая метка'
+	hintContent: null,
+	balloonContent: null
 }
 
 export const placemarkOptions = {
 	iconLayout: 'default#image',
-	// Своё изображение иконки метки.
-	iconImageHref: 'images/point.svg',
-	// Размеры метки.
+	iconImageHref: '/assets/img/point.svg',
 	iconImageSize: [34, 44],
-	// Смещение левого верхнего угла иконки относительно
-	// её "ножки" (точки привязки).
 	iconImageOffset: [-17, -44]
 }

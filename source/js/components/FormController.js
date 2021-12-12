@@ -1,6 +1,7 @@
 import validation from 'jquery-validation'
 import Inputmask from 'jquery-mask-plugin'
-import ApiClient from '../ApiClient';
+import suggestion from 'suggestions-jquery'
+import ApiClient from '../apiClient';
 import {initValidatorDefaults, getInputRadio} from '../helpers';
 import {validationMessages, validationRulesConfig, placemarkContent, placemarkOptions} from '../constants';
 
@@ -10,13 +11,13 @@ export default class FormController {
 		this.$tabs = this.$el.find('[data-tab]')
 		this.$tabsTitles = this.$el.find('[data-tab-title]')
 		this.$radioContainer = this.$el.find('[data-tab="pickup"] fieldset')
+		this.$addressInput = this.$el.find('[name="address"]')
 		this.$btnSubmit = this.$el.find('button[type="submit"]')
 		this.points = []
 		this.mapInstance = null
 		this.selectedPointId = ''
 		this.deliveryType = 'delivery'
 		this.submitHandler = this.submitHandler.bind(this)
-		this.init()
 	}
 
 	initRadios(points) {
@@ -40,15 +41,27 @@ export default class FormController {
 			})
 
 			const myCollection = new ymaps.GeoObjectCollection()
-			points.forEach(item => myCollection.add(new ymaps.Placemark(item.coords), placemarkContent, placemarkOptions))
+			points.forEach(item => myCollection.add(new ymaps.Placemark(item.coords,placemarkContent, placemarkOptions ) ))
 			myMap.geoObjects.add(myCollection)
-			myMap.setBounds(myMap.geoObjects.getBounds());
+			myMap.setBounds(myMap.geoObjects.getBounds(), {zoomMargin: [40, 40, 40, 40] });
 			const isMobile = window.innerWidth < 768
 			if (isMobile) {
 				myMap.behaviors
 					.disable(['drag', 'rightMouseButtonMagnifier'])
 			}
 			this.mapInstance = myMap
+		})
+	}
+
+	initValidation() {
+		this.$el.on('submit', (evt) => {
+			evt.preventDefault()
+		})
+		initValidatorDefaults()
+		this.$el.validate({
+			rules: validationRulesConfig,
+			messages: validationMessages,
+			submitHandler: this.submitHandler
 		})
 	}
 
@@ -71,7 +84,12 @@ export default class FormController {
 		}
 		payload.deliveryType = this.deliveryType
 		this.$btnSubmit.attr('disabled', true)
-		const result = await ApiClient.postFormRequest(payload)
+		let result
+		try {
+			result = await ApiClient.postFormRequest(payload)
+		} catch (err) {
+			console.error(err)
+		}
 		this.$btnSubmit.attr('disabled', false)
 		if (result.status === 'ok') {
 			this.$el[0].reset()
@@ -81,10 +99,20 @@ export default class FormController {
 		}
 	}
 
-	async init() {
-		this.points = await ApiClient.getPoints()
-		this.initRadios(this.points)
-		initValidatorDefaults()
+	initMasks() {
+		this.$el.find('[name="phone"]').mask('+7 (000) 000-00-00')
+	}
+
+	initSuggestions() {
+		this.$addressInput.suggestions({
+			token: "9c4d4344a2efdece2594dd7b25e1c75d885fc044",
+			type: "ADDRESS",
+			onSelect: function(suggestion) {
+			}
+		})
+	}
+
+	initTabs() {
 		this.$tabsTitles.on('click', (evt) => {
 			const activeTabName = $(evt.currentTarget).data('tab-title')
 			this.deliveryType = activeTabName
@@ -111,15 +139,21 @@ export default class FormController {
 				}
 			}
 		})
-		this.$el.validate({
-			rules: validationRulesConfig,
-			messages: validationMessages,
-			submitHandler: this.submitHandler
-		})
-		this.$el.find('[name="phone"]').mask('+7 (000) 000-00-00')
-		this.$el.on('submit', (evt) => {
-			evt.preventDefault()
-		})
-		console.log(this)
+	}
+
+	async init() {
+		try {
+			this.points = await ApiClient.getPoints()
+		} catch (error) {
+			console.error(error)
+		}
+
+		this.initRadios(this.points)
+		this.initValidation()
+		this.initMasks()
+		this.initSuggestions()
+		this.initTabs()
+
+
 	}
 }
