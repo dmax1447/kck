@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>КСК Виджет доставки</title>
+    <meta content="" name="author">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css" media="screen, projection, print">
+  </head>
+  <body>
+    <main class="page">
+      <div class="container">
+        <section class="widget">
+          <h1 class="widget__title">Выберите способ доставки</h1>
+          <form class="form" data-form="delivery-widget">
+            <div class="tabs form__content" data-tabs>
+              <div class="tabs__labels">
+                <div class="tabs__labels-item-wrap active" data-tab-title="delivery">
+                  <div class="tabs__labels-item tabs__labels-item--active">Доставка</div>
+                </div>
+                <div class="tabs__labels-item-wrap" data-tab-title="pickup">
+                  <div class="tabs__labels-item">Самовывоз</div>
+                </div>
+              </div>
+              <div class="tab tab--delivery active" data-tab="delivery">
+                <div class="tab__title" data-tab-title="delivery"><span class="tab__title-text">Доставка</span>
+                  <svg class="tab__title-icon" xmlns="http://www.w3.org/2000/svg" width="9.986" height="6.001" viewbox="0 0 9.986 6.001">
+                    <path id="arrow" d="M726.007,145.664l3.552-3.313h0L731,141.008l1.441,1.344h0l3.552,3.313-1.441,1.344L731,143.7l-3.552,3.313Z" transform="translate(-726.007 -141.008)" fill="currentColor"></path>
+                  </svg>
+                </div>
+                <div class="tab__content">
+                  <fieldset class="form__fieldset">
+                    <div class="input-text form__input">
+                      <input class="input-text__control" id="name" name="name" type="text" placeholder="Только кириллица"/>
+                      <label class="input-text__label" for="name">ФИО</label>
+                    </div>
+                    <div class="input-text form__input">
+                      <input class="input-text__control" id="phone" name="phone" type="text" placeholder="+7 (___) ___-__-__"/>
+                      <label class="input-text__label" for="phone">Телефон</label>
+                    </div>
+                    <div class="input-text form__input">
+                      <input class="input-text__control" id="address" name="address" type="text" placeholder="Город, улица, дом"/>
+                      <label class="input-text__label" for="address">Адрес доставки</label>
+                    </div>
+                    <div class="input-textarea form__input">
+                      <textarea class="input-textarea__control" id="comment" name="comment" type="text" rows="3"></textarea>
+                      <label class="input-textarea__label" for="comment">Комментарий</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="tab tab--pickup" data-tab="pickup">
+                <div class="tab__title" data-tab-title="pickup"><span class="tab__title-text">Самовывоз</span>
+                  <svg class="tab__title-icon" xmlns="http://www.w3.org/2000/svg" width="9.986" height="6.001" viewbox="0 0 9.986 6.001">
+                    <path id="arrow" d="M726.007,145.664l3.552-3.313h0L731,141.008l1.441,1.344h0l3.552,3.313-1.441,1.344L731,143.7l-3.552,3.313Z" transform="translate(-726.007 -141.008)" fill="currentColor"></path>
+                  </svg>
+                </div>
+                <div class="tab__content">
+                  <fieldset class="form__fieldset form__fieldset--pickup"></fieldset>
+                  <div class="map" id="map"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form__footer">
+              <button class="btn" type="submit">Отправить</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main><script src="" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=b8c7161f-fd0f-46cf-acf8-b68102e4340c"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
