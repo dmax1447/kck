@@ -14,7 +14,9 @@ export const initValidatorDefaults = () => {
 		},
 
 		errorPlacement: function(error, element) {
-			element.closest('.form__input').append(error)
+			const isRadio = element.attr('type') === 'radio'
+			const $errorContainer = isRadio ? $(element).closest('fieldset') : element.closest('.form__input')
+			$errorContainer.append(error)
 		}
 	});
 	$.validator.addMethod('phoneru', function(value, element) {
@@ -23,7 +25,7 @@ export const initValidatorDefaults = () => {
 		return isValid;
 	})
 	$.validator.addMethod('cyrillic', function(value, element) {
-		const phoneRegex = /[а-яА-я ]/g
+		const phoneRegex = /[а-яА-я -]/g
 		const isValid = phoneRegex.test(value)
 		return isValid;
 	})

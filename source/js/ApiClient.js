@@ -1,6 +1,6 @@
 export default {
 	async getPoints() {
-		return fetch('/assets/data/points.json')
+		return fetch('assets/data/points.json')
 			.then(response => response.json())
 	},
 

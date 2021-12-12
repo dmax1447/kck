@@ -1,23 +1,6 @@
 
 extends ../_template
 
-block variables
-	-
-		// данные для статичной генерации точек
-		const points = [
-			// {
-			// 	name:'ПВЗ Песчаная ул., 13',
-			// 	id: '1',
-			// 	coords: '55.801131, 37.508167'
-			// },
-			// {
-			// 	name: 'ПВЗ Подсосенский пер., 11',
-			// 	id: '2',
-			// 	coords: '55.757556, 37.651601'
-			// }
-		];
-
-
 block content
 	main.page
 		.container
@@ -46,10 +29,7 @@ block content
 								+open-icon('tab__title-icon')
 							.tab__content
 								fieldset.form__fieldset.form__fieldset--pickup
-									// each point in points
-									// 	+radio('pickup_point', point.name, point.id)(class = 'form__input')
 								#map.map
-									p здесь карта
 					.form__footer
 						button.btn(type="submit") Отправить
 

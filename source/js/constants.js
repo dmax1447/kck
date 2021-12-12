@@ -9,7 +9,13 @@ export const validationMessages = {
 		phoneru: 'Неверный номер телефона'
 	},
 	address: {
-		required: true
+		required: 'Адрес обязателен'
+	},
+	comment: {
+		required: 'Комментарий обязателен'
+	},
+	pickup_point: {
+		required: 'Выберите пункт самовывоза'
 	}
 }
 
@@ -22,9 +28,29 @@ export const validationRulesConfig = {
 	phone: {
 		required: true,
 		phoneru: true,
-		minlength: 10
 	},
 	address: {
 		required: true,
+	},
+	comment: {
+		required: true
+	},
+	pickup_point: {
+		required: true
 	}
+}
+export const placemarkContent = {
+	hintContent: 'Собственный значок метки',
+	balloonContent: 'Это красивая метка'
+}
+
+export const placemarkOptions = {
+	iconLayout: 'default#image',
+	// Своё изображение иконки метки.
+	iconImageHref: 'images/point.svg',
+	// Размеры метки.
+	iconImageSize: [34, 44],
+	// Смещение левого верхнего угла иконки относительно
+	// её "ножки" (точки привязки).
+	iconImageOffset: [-17, -44]
 }
