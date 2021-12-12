@@ -1,6 +1,7 @@
 import validation from 'jquery-validation'
 import Inputmask from 'jquery-mask-plugin'
 import suggestion from 'suggestions-jquery'
+const ymaps = window.ymaps
 import ApiClient from '../apiClient';
 import {initValidatorDefaults, getInputRadio} from '../helpers';
 import {validationMessages, validationRulesConfig, placemarkContent, placemarkOptions} from '../constants';
@@ -43,8 +44,9 @@ export default class FormController {
 			const myCollection = new ymaps.GeoObjectCollection()
 			points.forEach(item => myCollection.add(new ymaps.Placemark(item.coords,placemarkContent, placemarkOptions ) ))
 			myMap.geoObjects.add(myCollection)
-			myMap.setBounds(myMap.geoObjects.getBounds(), {zoomMargin: [40, 40, 40, 40] });
 			const isMobile = window.innerWidth < 768
+			const marginOffsets = isMobile ? [40, 40, 40, 40] : [80, 80, 80, 80]
+			myMap.setBounds(myMap.geoObjects.getBounds(), {zoomMargin: marginOffsets });
 			if (isMobile) {
 				myMap.behaviors
 					.disable(['drag', 'rightMouseButtonMagnifier'])

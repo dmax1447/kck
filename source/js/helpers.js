@@ -4,7 +4,7 @@ export const initValidatorDefaults = () => {
 			$(element).closest(".form__input").addClass("has-error").removeClass('valid');
 		},
 		unhighlight: function(element) {
-			$(element).closest(".form__input").removeClass("has-error");
+			$(element).closest(".form__input").removeClass("has-error").addClass('valid');
 		},
 		errorElement: "span",
 		errorClass: "form__input-error",
