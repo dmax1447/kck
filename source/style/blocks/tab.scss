@@ -26,6 +26,9 @@
 	&__content {
 		padding: 16px 18px;
 		display: none;
+		@include desktop {
+			padding: 32px;
+		}
 	}
 
 	&.active {

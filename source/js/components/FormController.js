@@ -49,9 +49,7 @@ export default class FormController {
 					.disable(['drag', 'rightMouseButtonMagnifier'])
 			}
 			this.mapInstance = myMap
-
 		})
-
 	}
 
 	async submitHandler(form) {
@@ -86,7 +84,6 @@ export default class FormController {
 	async init() {
 		this.points = await ApiClient.getPoints()
 		this.initRadios(this.points)
-		this.initMap(this.points)
 		initValidatorDefaults()
 		this.$tabsTitles.on('click', (evt) => {
 			const activeTabName = $(evt.currentTarget).data('tab-title')
@@ -109,7 +106,9 @@ export default class FormController {
 			})
 
 			if (activeTabName === 'pickup') {
-				this.mapInstance.setBounds(this.mapInstance.geoObjects.getBounds())
+				if (!this.mapInstance) {
+					this.initMap(this.points)
+				}
 			}
 		})
 		this.$el.validate({
